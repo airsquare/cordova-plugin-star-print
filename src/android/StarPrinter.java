@@ -35,27 +35,15 @@ public class StarPrinter {
     private CallbackContext mCallbackContext;
     private StarIOPort port = null;
 
-    public StarPrinter(Context context, final String image_to_print, final String ip_address, final CallbackContext callbackcontext, final String action){
+    public StarPrinter(Context context, String image_to_print, String ip_address, CallbackContext callbackcontext, String action){
         currentContext = context;
         mCallbackContext = callbackcontext;
-        // Try to print image in new thread
-        new AsyncTask<Void, Void, Void>() {
-            @Override
-            protected Void doInBackground( Void... voids ) {
-                try {
-                    if(action.equals("print_receipt")) {
-                        printReceipt(ip_address, image_to_print);
-                    }
-                    else if(action.equals("find_printers")) {
-                        findPrinters();
-                    }
-                }
-                catch(Exception e) {
-                    mCallbackContext.error(e.getMessage());
-                }
-                return null;
-            }
-        }.execute();
+        if(action.equals("print_receipt")) {
+            printReceipt(ip_address, image_to_print);
+        }
+        else if(action.equals("find_printers")) {
+            findPrinters();
+        }
     }
 
     private void printReceipt(String ip_address, String image_to_print){

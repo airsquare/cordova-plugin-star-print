@@ -29,25 +29,39 @@ public class StarController extends CordovaPlugin  {
 		super.initialize(cordova, webView);
 	}
 
-	public boolean execute(String action, JSONArray arguments,
-		CallbackContext callbackContext) throws JSONException {
+	public boolean execute(String action, final JSONArray arguments,
+		final CallbackContext callbackContext) throws JSONException {
 		mContext = this.cordova.getActivity();
 
 		try {
 			if (PRINTSAMPLERECIEPT.equals(action)) {
-
-				String ip_address = (arguments.get(0).toString());
-				String base64_image_str = (arguments.get(1).toString());
-				mPrinter = null;
-				StarPrinter mPrinter = new StarPrinter(mContext,base64_image_str,ip_address,callbackContext, "print_receipt");
+				cordova.getThreadPool().execute(new Runnable() {
+					public void run() {
+						try {
+							String ip_address = (arguments.get(0).toString());
+							String base64_image_str = (arguments.get(1).toString());
+							mPrinter = null;
+							StarPrinter mPrinter = new StarPrinter(mContext,base64_image_str,ip_address,callbackContext, "print_receipt");
+						} catch (Exception e) {
+							callbackContext.error(e.getMessage());
+						}
+					}
+				});
 				return true;
 			}
 			else if(FINDPRINTERS.equals(action)) {
-				mPrinter = null;
-				StarPrinter mPrinter = new StarPrinter(mContext,"", "",callbackContext, "find_printers");
+				cordova.getThreadPool().execute(new Runnable() {
+					public void run() {
+						try {
+							mPrinter = null;
+							StarPrinter mPrinter = new StarPrinter(mContext,"", "",callbackContext, "find_printers");
+						} catch (Exception e) {
+							callbackContext.error(e.getMessage());
+						}
+					}
+				});
 				return true;
 			}
-
 			callbackContext.error("Invalid action: " + action);
 			return false;
 		} catch (Exception e) {
