@@ -37,14 +37,10 @@ public class StarController extends CordovaPlugin  {
 			if (PRINTSAMPLERECIEPT.equals(action)) {
 				cordova.getThreadPool().execute(new Runnable() {
 					public void run() {
-						try {
-							String ip_address = (arguments.get(0).toString());
-							String base64_image_str = (arguments.get(1).toString());
-							mPrinter = null;
-							StarPrinter mPrinter = new StarPrinter(mContext,base64_image_str,ip_address,callbackContext, "print_receipt");
-						} catch (Exception e) {
-							callbackContext.error(e.getMessage());
-						}
+						String ip_address = (arguments.get(0).toString());
+						String base64_image_str = (arguments.get(1).toString());
+						mPrinter = null;
+						StarPrinter mPrinter = new StarPrinter(mContext,base64_image_str,ip_address,callbackContext, "print_receipt");
 					}
 				});
 				return true;
@@ -52,12 +48,8 @@ public class StarController extends CordovaPlugin  {
 			else if(FINDPRINTERS.equals(action)) {
 				cordova.getThreadPool().execute(new Runnable() {
 					public void run() {
-						try {
-							mPrinter = null;
-							StarPrinter mPrinter = new StarPrinter(mContext,"", "",callbackContext, "find_printers");
-						} catch (Exception e) {
-							callbackContext.error(e.getMessage());
-						}
+						mPrinter = null;
+						StarPrinter mPrinter = new StarPrinter(mContext,"", "",callbackContext, "find_printers");
 					}
 				});
 				return true;
