@@ -37,10 +37,15 @@ public class StarController extends CordovaPlugin  {
 			if (PRINTSAMPLERECIEPT.equals(action)) {
 				cordova.getThreadPool().execute(new Runnable() {
 					public void run() {
-						String ip_address = (arguments.get(0).toString());
-						String base64_image_str = (arguments.get(1).toString());
-						mPrinter = null;
-						StarPrinter mPrinter = new StarPrinter(mContext,base64_image_str,ip_address,callbackContext, "print_receipt");
+						try{
+							String ip_address = (arguments.get(0).toString());
+							String base64_image_str = (arguments.get(1).toString());
+							mPrinter = null;
+							StarPrinter mPrinter = new StarPrinter(mContext,base64_image_str,ip_address,callbackContext, "print_receipt");
+						}
+						catch(JSONException e){
+
+						}
 					}
 				});
 				return true;
