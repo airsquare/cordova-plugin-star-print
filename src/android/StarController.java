@@ -55,7 +55,7 @@ public class StarController extends CordovaPlugin  {
 				cordova.getThreadPool().execute(new Runnable() {
 					public void run() {
 						mPrinter = null;
-						StarPrinter mPrinter = new StarPrinter(mContext,"", "",callbackContext, "find_printers");
+						StarPrinter mPrinter = new StarPrinter(mContext,"", "", "", callbackContext, "find_printers");
 					}
 				});
 				return true;
