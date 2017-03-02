@@ -35,21 +35,33 @@ public class StarPrinter {
     private CallbackContext mCallbackContext;
     private StarIOPort port = null;
 
-    public StarPrinter(Context context, String image_to_print, String ip_address, CallbackContext callbackcontext, String action){
+    public StarPrinter(Context context, String image_to_print, String ip_address, String paper, CallbackContext callbackcontext, String action){
         currentContext = context;
         mCallbackContext = callbackcontext;
         if(action.equals("print_receipt")) {
-            printReceipt(ip_address, image_to_print);
+            printReceipt(ip_address, image_to_print, paper);
         }
         else if(action.equals("find_printers")) {
             findPrinters();
         }
     }
 
-    private void printReceipt(String ip_address, String image_to_print){
+    private void printReceipt(String ip_address, String image_to_print, String paper){
+
         byte[] data = Base64.decode(image_to_print, Base64.DEFAULT);
         Bitmap image = BitmapFactory.decodeByteArray(data, 0, data.length);
         RasterCommand rasterType = RasterCommand.Standard;
+        int max_paper_width;
+        if (paper.equals("3_Inch")) {
+            max_paper_width = 576;
+        }
+        else if(paper.equals("4_Inch")) {
+            max_paper_width = 576;
+        }
+        else {
+            max_paper_width = 832;
+        }
+
         PrinterFunctions.PrintBitmap(currentContext, ip_address, "", image, 576, false, rasterType, mCallbackContext);
     }
 
