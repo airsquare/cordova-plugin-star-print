@@ -22,6 +22,12 @@
             </feature>
         </config-file>
 
+        <config-file target="AndroidManifest.xml" parent="/*">
+            <uses-permission android:name="android.permission.BLUETOOTH" />
+            <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
+            <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+        </config-file>
+
         <source-file src="src/android/StarController.java" target-dir="src/org/apache/cordova/plugin" />
         <source-file src="src/android/StarPrinter.java" target-dir="src/org/apache/cordova/plugin" />
         <source-file src="src/android/PrinterFunctions.java" target-dir="src/org/apache/cordova/plugin" />
