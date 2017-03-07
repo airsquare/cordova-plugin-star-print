@@ -7,7 +7,7 @@
     <keywords>cordova,star,print</keywords>
 
     <js-module src="www/starPrint.js" name="StarPrint">
-        <clobbers target="cordova.plugins.StarPrint" />
+        <clobbers target="StarPrint" />
     </js-module>
      <!-- cordova -->
     <engines>
