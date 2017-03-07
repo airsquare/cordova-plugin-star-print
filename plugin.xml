@@ -7,7 +7,7 @@
     <keywords>cordova,star,print</keywords>
 
     <js-module src="www/starPrint.js" name="StarPrint">
-        <clobbers target="StarPrint" />
+        <clobbers target="cordova.plugins.StarPrint" />
     </js-module>
      <!-- cordova -->
     <engines>
@@ -17,7 +17,7 @@
     <platform name="android">
 
         <config-file target="res/xml/config.xml" parent="/*">
-            <feature name="cordova.plugins.StarPrint">
+            <feature name="StarPrint">
                 <param name="android-package" value="StarController"/>
             </feature>
         </config-file>
