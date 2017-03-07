@@ -17,7 +17,7 @@
     <platform name="android">
 
         <config-file target="res/xml/config.xml" parent="/*">
-            <feature name="StarPrint">
+            <feature name="cordova.plugins.StarPrint">
                 <param name="android-package" value="StarController"/>
             </feature>
         </config-file>
