@@ -51,8 +51,8 @@ public class StarPrinter {
         byte[] data = Base64.decode(image_to_print, Base64.DEFAULT);
         Bitmap image = BitmapFactory.decodeByteArray(data, 0, data.length);
         // scale up image
-        int w = Math.round(((float)image.getHeight() * (float)1.5));
-        int h = Math.round(((float)image.getWidth() * (float)1.5));
+        int w = Math.round(((float)image.getWidth() * (float)1.5));
+        int h = Math.round(((float)image.getHeight() * (float)1.5));
         image = Bitmap.createScaledBitmap(image, w, h, false);
 
         RasterCommand rasterType = RasterCommand.Standard;
