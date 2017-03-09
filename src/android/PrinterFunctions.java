@@ -1025,7 +1025,7 @@ public class PrinterFunctions {
                 callbackContext.success("print success");
             }
         } catch (StarIOPortException e) {
-            callbackContext.error(e.getMessage());
+            callbackContext.error("Could not connect to printer. Make sure the printer is on.");
         } finally {
             if (port != null) {
                 try {

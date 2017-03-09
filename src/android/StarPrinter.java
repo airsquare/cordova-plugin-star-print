@@ -53,17 +53,17 @@ public class StarPrinter {
 
         RasterCommand rasterType = RasterCommand.Standard;
         int max_paper_width;
-        if (paper.equals("3_Inch")) {
+        if (paper.equals("3 Inch")) {
             max_paper_width = 576;
         }
-        else if(paper.equals("4_Inch")) {
-            max_paper_width = 576;
-        }
-        else {
+        else if(paper.equals("4 Inch")) {
             max_paper_width = 832;
         }
+        else {
+            max_paper_width = 576;
+        }
 
-        PrinterFunctions.PrintBitmap(currentContext, ip_address, "", image, 576, false, rasterType, mCallbackContext);
+        PrinterFunctions.PrintBitmap(currentContext, ip_address, "", image, max_paper_width, false, rasterType, mCallbackContext);
     }
 
     private void findPrinters() {
@@ -94,7 +94,7 @@ public class StarPrinter {
             mCallbackContext.success(result);
         }
         catch (JSONException e) {
-            mCallbackContext.error(e.getMessage());
+            mCallbackContext.error("Error building JSON packet");
         }
     }
 }
