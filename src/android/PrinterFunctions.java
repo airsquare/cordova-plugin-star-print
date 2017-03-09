@@ -1001,6 +1001,7 @@ public class PrinterFunctions {
             StarPrinterStatus status = port.beginCheckedBlock();
 
             if (true == status.offline) {
+                callbackContext.error("Printer is offline");
                 throw new StarIOPortException("A printer is offline");
             }
 
@@ -1011,10 +1012,13 @@ public class PrinterFunctions {
             status = port.endCheckedBlock();
 
             if (status.coverOpen == true) {
+                callbackContext.error("Printer cover is open");
                 throw new StarIOPortException("Printer cover is open");
             } else if (status.receiptPaperEmpty == true) {
+                callbackContext.error("Printer paper is empty");
                 throw new StarIOPortException("Receipt paper is empty");
             } else if (status.offline == true) {
+                callbackContext.error("Printer is offline");
                 throw new StarIOPortException("Printer is offline");
             }
             else {
