@@ -34,10 +34,15 @@ public class StarController extends CordovaPlugin  {
 		mContext = this.cordova.getActivity();
 
 		try {
+
 			if (PRINTSAMPLERECIEPT.equals(action)) {
+
 				cordova.getThreadPool().execute(new Runnable() {
+
 					public void run() {
+
 						try{
+
 							String ip_address = (arguments.get(0).toString());
 							String base64_image_str = (arguments.get(1).toString());
 							String paper = (arguments.get(2).toString());
@@ -52,8 +57,11 @@ public class StarController extends CordovaPlugin  {
 				return true;
 			}
 			else if(FINDPRINTERS.equals(action)) {
+
 				cordova.getThreadPool().execute(new Runnable() {
+
 					public void run() {
+						
 						mPrinter = null;
 						StarPrinter mPrinter = new StarPrinter(mContext,"", "", "", callbackContext, "find_printers");
 					}
