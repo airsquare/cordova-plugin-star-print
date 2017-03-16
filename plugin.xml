@@ -54,9 +54,8 @@
         <header-file src="src/ios/RasterDocument.h" compiler-flags="-fno-objc-arc"/>
         <source-file src="src/ios/RasterDocument.m" compiler-flags="-fno-objc-arc"/>
         <header-file src="src/ios/CommonEnum.h" compiler-flags="-fno-objc-arc"/>
-        <source-file src="src/ios/StarIO.framework/Versions/A/StarIO"/>
-        <header-file src="src/ios/StarIO.framework/Versions/A/Headers/SMPort.h" />
 
+        <framework src="src/ios/StarIO.framework" custom="true" compiler-flags="-fno-objc-arc"/>
         <framework src="CoreBluetooth.framework"/>
         <framework src="ExternalAccessory.framework"/>
         <framework src="CoreGraphics.framework"/>
